@@ -13,25 +13,32 @@
 </head>
 <body>
 	<div>
-		<a href="<%=request.getContextPath()%>/GamePage.jsp">Back to Home Page</a>
+		<a href="<%=request.getContextPath()%>/GamePage.jsp">Back to Home
+			Page</a> <a href="<%=request.getContextPath()%>/createThread.jsp">Create
+			a Thread</a>
 	</div>
 	<h1>PopGamers Discussion Feed</h1>
-	<div class="row center" style="float: none; margin: 0 auto;width: 200px;">
-		<div class="card" style="outline-style: solid">
-			<c:forEach var="thread" items="${listFeed}">
+	<div class="row center"
+		style="float: none; margin: 0 auto; width: 200px;">
+		<c:forEach var="thread" items="${listFeed}">
+			<div class="card" style="outline-style: solid">
 				<!-- <a href="#"> -->
 				<br>
-				<p>Thread Name: <b>${thread.title}</b></p>
+				<p>
+					Thread Name: <b>${thread.title}</b>
+				</p>
 				<p>Thread Content: ${thread.content}</p>
 				<p>Created By: ${thread.user}</p>
 				<p>Date Posted: ${thread.date}</p>
 				<!-- </a> -->
 				<div>
-					<a href="<%=request.getContextPath()%>/DiscussionPage.jsp">Discuss in thread</a>
-					<br>
+					<a href="<%=request.getContextPath()%>/DiscussionPage.jsp">Discuss
+						in thread</a> <br>
 				</div>
-			</c:forEach>
-		</div>
+				<br>
+			</div>
+			<br>
+		</c:forEach>
 	</div>
 </body>
 </html>
