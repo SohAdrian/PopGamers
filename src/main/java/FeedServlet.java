@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
+import java.time.LocalDateTime; // import the LocalDateTime class
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -74,13 +75,13 @@ public class FeedServlet extends HttpServlet {
 		try {
 			switch (action) {
 			case "/FeedServlet/delete":
-				//deleteUser(request, response);
+				 deleteThread(request, response);
 				break;
 			case "/FeedServlet/edit":
-				//showEditForm(request, response);
+				 showEditForm(request, response);
 				break;
 			case "/FeedServlet/update":
-				//updateUser(request, response);
+				 updateThread(request, response);
 				break;
 			case "/FeedServlet/dashboard":
 				listFeed(request, response);
@@ -117,6 +118,76 @@ public class FeedServlet extends HttpServlet {
 		request.setAttribute("listFeed", threads);
 		request.getRequestDispatcher("/FeedPage.jsp").forward(request, response);
 
+	}
+
+	// method to get parameter, query database for existing user data and redirect
+	// to user edit page
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		// get parameter passed in the URL
+		String title = request.getParameter("title");
+		Feed existingThread = new Feed("", "", "", "");
+		// Step 1: Establishing a Connection
+		try (Connection connection = getConnection();
+				// Step 2:Create a statement using connection object
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_THREAD_BY_ID);) {
+			preparedStatement.setString(1, title);
+			// Step 3: Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+			// Step 4: Process the ResultSet object
+			while (rs.next()) {
+				title = rs.getString("title");
+				String content = rs.getString("content");
+				String user = rs.getString("user");
+				String date = rs.getString("date");
+				existingThread = new Feed(title, content, user, date);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		// Step 5: Set existingUser to request and serve up the userEdit form
+		request.setAttribute("title", existingThread);
+		request.getRequestDispatcher("/threadEdit.jsp").forward(request, response);
+	}
+
+	// method to update the user table base on the form data
+	private void updateThread(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		// Step 1: Retrieve value from the request
+		String oriTitle = request.getParameter("oriTitle");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String user = request.getParameter("user");
+		String date = request.getParameter("date");
+
+		// Step 2: Attempt connection with database and execute update user SQL query
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_THREAD_SQL);) {
+			statement.setString(1, title);
+			statement.setString(2, content);
+			statement.setString(3, user);
+			statement.setString(4, date);
+			statement.setString(5, oriTitle);
+			int i = statement.executeUpdate();
+		}
+		// Step 3: redirect back to UserServlet (note: remember to change the url to
+		// your project name)
+		response.sendRedirect("http://localhost:8080/PopGamers/FeedServlet/dashboard");
+	}
+
+	// method to delete user
+	private void deleteThread(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		// Step 1: Retrieve value from the request
+		String title = request.getParameter("title");
+		// Step 2: Attempt connection with database and execute delete user SQL query
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(DELETE_THREAD_SQL);) {
+			statement.setString(1, title);
+			int i = statement.executeUpdate();
+		}
+		// Step 3: redirect back to UserServlet dashboard (note: remember to change the
+		// url to your project name)
+		response.sendRedirect("http://localhost:8080/PopGamers/FeedServlet/dashboard");
 	}
 
 	/**

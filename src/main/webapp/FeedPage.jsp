@@ -18,26 +18,29 @@
 			a Thread</a>
 	</div>
 	<h1>PopGamers Discussion Feed</h1>
-	<div class="row center"
-		style="float: none; margin: 0 auto; width: 200px;">
+	<div class="row center" style="float: none; margin: 0 auto;">
 		<c:forEach var="thread" items="${listFeed}">
-			<div class="card" style="outline-style: solid">
-				<!-- <a href="#"> -->
-				<br>
-				<p>
-					Thread Name: <b>${thread.title}</b>
-				</p>
-				<p>Thread Content: ${thread.content}</p>
-				<p>Created By: ${thread.user}</p>
-				<p>Date Posted: ${thread.date}</p>
-				<!-- </a> -->
-				<div>
-					<a href="<%=request.getContextPath()%>/DiscussionPage.jsp">Discuss
-						in thread</a> <br>
+			<div class="col-sm-6">
+				<div class="card" style="outline-style: solid;">
+					<!-- <a href="#"> -->
+					<br>
+					<p>
+						Thread Name: <b>${thread.title}</b>
+					</p>
+					<p>Thread Content: ${thread.content}</p>
+					<p>Created By: ${thread.user}</p>
+					<p>Date Posted: ${thread.date}</p>
+					<!-- </a> -->
+					<div>
+						<a href="<%=request.getContextPath()%>/DiscussionPage.jsp">Discuss
+							in thread</a><br> <a
+							href="edit?title=<c:out value='${thread.title}'/>">Edit</a><br>
+						<a href="delete?title=<c:out value='${thread.title}'/>">Delete</a><br>
+					</div>
+					<br>
 				</div>
 				<br>
 			</div>
-			<br>
 		</c:forEach>
 	</div>
 </body>
