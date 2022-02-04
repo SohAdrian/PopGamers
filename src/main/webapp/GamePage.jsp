@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div>
-		<a href="<%=request.getContextPath()%>/FeedPage.jsp">Back to Dashboard</a>
+		<a href="<%=request.getContextPath()%>/FeedServlet/dashboard">Back to Dashboard</a>
 	</div>
 	<h1>Testing</h1>
 </body>
