@@ -12,7 +12,6 @@ public class Feed {
 		this.user = user;
 		this.date = date;
 	}
-	
 	public String getTitle() {
 		return title;
 	}

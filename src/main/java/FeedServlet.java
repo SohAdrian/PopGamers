@@ -146,7 +146,7 @@ public class FeedServlet extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 		// Step 5: Set existingUser to request and serve up the userEdit form
-		request.setAttribute("title", existingThread);
+		request.setAttribute("thread", existingThread);
 		request.getRequestDispatcher("/threadEdit.jsp").forward(request, response);
 	}
 
