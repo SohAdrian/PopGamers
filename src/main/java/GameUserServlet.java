@@ -40,7 +40,7 @@ public class GameUserServlet extends HttpServlet {
 	private static final String SELECT_USER_BY_ID = "select username,password,email from GameUserDetails where username =?";
 	private static final String SELECT_ALL_USERS = "select * from GameUserDetails ";
 	private static final String DELETE_USERS_SQL = "delete from GameUserDetails where username = ?;";
-	private static final String UPDATE_USERS_SQL = "update GameUserDetails set username = ?,password= ?, email =? where username = ?;";
+	private static final String UPDATE_USERS_SQL = "update GameUserDetails set username = ?, password= ?, email =? where username = ?;";
 
 	// Step 3: Implement the getConnection method which facilitates connection to
 	// the database via JDBC
@@ -68,10 +68,10 @@ public class GameUserServlet extends HttpServlet {
 			ResultSet rs = preparedStatement.executeQuery();
 			// Step 5.3: Process the ResultSet object.
 			while (rs.next()) {
-				String name = rs.getString("username");
+				String username = rs.getString("username");
 				String password = rs.getString("password");
 				String email = rs.getString("email");
-				users.add(new GameUser(name, password, email));
+				users.add(new GameUser(username, password, email));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -128,7 +128,7 @@ public class GameUserServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		// get parameter passed in the URL
-		String username = request.getParameter("username");
+		String username = request.getParameter("name");
 		GameUser existingUser = new GameUser("", "", "");
 		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
@@ -156,13 +156,13 @@ public class GameUserServlet extends HttpServlet {
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		// Step 1: Retrieve value from the request
 		String oriName = request.getParameter("oriName");
-		String username = request.getParameter("username");
+		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		// Step 2: Attempt connection with database and execute update user SQL query
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
-			statement.setString(1, username);
+			statement.setString(1, name);
 			statement.setString(2, password);
 			statement.setString(3, email);
 			statement.setString(4, oriName);
@@ -176,11 +176,11 @@ public class GameUserServlet extends HttpServlet {
 	// method to delete user
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		// Step 1: Retrieve value from the request
-		String username = request.getParameter("username");
+		String name = request.getParameter("name");
 		// Step 2: Attempt connection with database and execute delete user SQL query
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
-			statement.setString(1, username);
+			statement.setString(1, name);
 			int i = statement.executeUpdate();
 		}
 		// Step 3: redirect back to UserServlet dashboard (note: remember to change the

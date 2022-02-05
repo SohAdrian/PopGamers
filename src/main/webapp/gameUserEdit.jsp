@@ -14,6 +14,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<h1><c:out value='${user.name}' /></h1>
 
 	<nav class="navbar navbar-expand-md navbar-light">
 		<div>
