@@ -70,6 +70,7 @@ public class RegisterServlet extends HttpServlet {
 			if (i > 0) {
 				PrintWriter writer = response.getWriter();
 				writer.println("<h1>" + "You have successfully registered an account!" + "</h1>");
+				response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet/dashboard");
 				writer.close();
 			}
 		} // Step 8: catch and print out any exception

@@ -37,10 +37,10 @@ public class GameUserServlet extends HttpServlet {
 	// database
 	private static final String INSERT_USERS_SQL = "INSERT INTO GameUserDetails"
 			+ " (username, password, email) VALUES " + " (?, ?);";
-	private static final String SELECT_USER_BY_ID = "select username,password,email,language from GameUserDetails where username =?";
+	private static final String SELECT_USER_BY_ID = "select username,password,email from GameUserDetails where username =?";
 	private static final String SELECT_ALL_USERS = "select * from GameUserDetails ";
 	private static final String DELETE_USERS_SQL = "delete from GameUserDetails where username = ?;";
-	private static final String UPDATE_USERS_SQL = "update GameUserDetails set name = ?,password= ?, email =? where username = ?;";
+	private static final String UPDATE_USERS_SQL = "update GameUserDetails set username = ?,password= ?, email =? where username = ?;";
 
 	// Step 3: Implement the getConnection method which facilitates connection to
 	// the database via JDBC
@@ -170,17 +170,17 @@ public class GameUserServlet extends HttpServlet {
 		}
 		// Step 3: redirect back to UserServlet (note: remember to change the url to
 		// your project name)
-		response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet");
+		response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet/dashboard");
 	}
 
 	// method to delete user
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		// Step 1: Retrieve value from the request
-		String name = request.getParameter("username");
+		String username = request.getParameter("username");
 		// Step 2: Attempt connection with database and execute delete user SQL query
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
-			statement.setString(1, name);
+			statement.setString(1, username);
 			int i = statement.executeUpdate();
 		}
 		// Step 3: redirect back to UserServlet dashboard (note: remember to change the
