@@ -128,21 +128,21 @@ public class GameUserServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		// get parameter passed in the URL
-		String name = request.getParameter("name");
+		String username = request.getParameter("username");
 		GameUser existingUser = new GameUser("", "", "");
 		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
 				// Step 2:Create a statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
-			preparedStatement.setString(1, name);
+			preparedStatement.setString(1, username);
 			// Step 3: Execute the query or update query
 			ResultSet rs = preparedStatement.executeQuery();
 			// Step 4: Process the ResultSet object
 			while (rs.next()) {
-				name = rs.getString("name");
+				username = rs.getString("username");
 				String password = rs.getString("password");
 				String email = rs.getString("email");
-				existingUser = new GameUser(name, password, email);
+				existingUser = new GameUser(username, password, email);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -156,13 +156,13 @@ public class GameUserServlet extends HttpServlet {
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		// Step 1: Retrieve value from the request
 		String oriName = request.getParameter("oriName");
-		String name = request.getParameter("name");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		// Step 2: Attempt connection with database and execute update user SQL query
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
-			statement.setString(1, name);
+			statement.setString(1, username);
 			statement.setString(2, password);
 			statement.setString(3, email);
 			statement.setString(4, oriName);
@@ -171,6 +171,21 @@ public class GameUserServlet extends HttpServlet {
 		// Step 3: redirect back to UserServlet (note: remember to change the url to
 		// your project name)
 		response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet");
+	}
+
+	// method to delete user
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		// Step 1: Retrieve value from the request
+		String name = request.getParameter("username");
+		// Step 2: Attempt connection with database and execute delete user SQL query
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
+			statement.setString(1, name);
+			int i = statement.executeUpdate();
+		}
+		// Step 3: redirect back to UserServlet dashboard (note: remember to change the
+		// url to your project name)
+		response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet/dashboard");
 	}
 
 }
