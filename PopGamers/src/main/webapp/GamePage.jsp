@@ -12,13 +12,17 @@
 <title>PopGamers</title>
 </head>
 <body>
-<h1>Add a New Game</h1>
-	<form action="GameServlet" method="post">
-		<br> Game Name: <input type="text" name="gameName"><br>
-		gamePicture: <input type="text" name="gamePicture"><br>
-		gameDescription: <input type="text" name="gameDescription"><br>
-		Game's Genre: <input type="text" name="genre"><br> <input
-			type="submit" value="Add Game?" />
-	</form>
+	<a href="<%=request.getContextPath()%>/ReviewServlet/GameListing"
+		class="btn btn-info">Back to Game Listing</a>
+	<h1>Add a New Game</h1>
+	<div class="card">
+		<form action="GameServlet" method="post">
+			<br> Game Name: <input type="text" name="gameName"><br>
+			gamePicture: <input type="text" name="gamePicture"><br>
+			gameDescription: <input type="text" name="gameDescription"><br>
+			Game's Genre: <input type="text" name="genre"><br> <input
+				class="btn btn-info" type="submit" value="Add Game?" />
+		</form>
+	</div>
 </body>
 </html>
