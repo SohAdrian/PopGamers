@@ -32,12 +32,14 @@ public class ReviewServlet extends HttpServlet {
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
 
-	//Step 2: Prepare list of SQL prepared statements to perform CRUD to our database
-	 private static final String INSERT_GAMES_SQL = "INSERT INTO GameDetails" + " (gameName, gamePicture, gameDescription, genre) VALUES " + " (?, ?, ?);";
-	 private static final String SELECT_GAME_BY_ID = "select gameName, gamePicture,gameDescription,genre from GameDetails where gameName =?";
-	 private static final String SELECT_ALL_GAMES = "select * from GameDetails ";
-	 private static final String DELETE_GAMES_SQL = "delete from GameDetails where gameName = ?;";
-	 private static final String UPDATE_GAMES_SQL = "update GameDetails set gameName = ?, gamePicture= ?, gameDescription =?, genre =? where gameName = ?;";
+	// Step 2: Prepare list of SQL prepared statements to perform CRUD to our
+	// database
+	private static final String INSERT_GAMES_SQL = "INSERT INTO GameDetails"
+			+ " (gameName, gamePicture, gameDescription, genre) VALUES " + " (?, ?, ?);";
+	private static final String SELECT_GAME_BY_ID = "select gameName, gamePicture, gameDescription,genre from GameDetails where gameName = ?";
+	private static final String SELECT_ALL_GAMES = "select * from GameDetails ";
+	private static final String DELETE_GAMES_SQL = "delete from GameDetails where gameName = ?;";
+	private static final String UPDATE_GAMES_SQL = "update GameDetails set gameName = ?, gamePicture= ?, gameDescription =?, genre =? where gameName = ?;";
 
 	private static final long serialVersionUID = 1L;
 
@@ -77,20 +79,19 @@ public class ReviewServlet extends HttpServlet {
 		String action = request.getServletPath();
 		try {
 			switch (action) {
-
-			case "/insert":
+			case "/ReviewServlet/delete":
+				deleteGame(request, response);
 				break;
 
-			case "/delete":
+			case "/ReviewServlet/edit":
+				showEditGames(request, response);
 				break;
 
-			case "/edit":
+			case "/ReviewServlet/update":
+				updateGame(request, response);
 				break;
 
-			case "/update":
-				break;
-				
-			default:
+			case "/ReviewServlet/GameListing":
 				listGames(request, response);
 				break;
 			}
@@ -122,8 +123,8 @@ public class ReviewServlet extends HttpServlet {
 				String gamePicture = rs.getString("gamePicture");
 				String gameDescription = rs.getString("gameDescription");
 				String genre = rs.getString("genre");
-				
-				//preparedStatement.setString(1, gameName);
+
+				// preparedStatement.setString(1, gameName);
 
 				games.add(new Game(gameName, gamePicture, gameDescription, genre));
 			}
@@ -137,7 +138,6 @@ public class ReviewServlet extends HttpServlet {
 		request.setAttribute("listGames", games);
 		request.getRequestDispatcher("/GameListing.jsp").forward(request, response);
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -149,105 +149,84 @@ public class ReviewServlet extends HttpServlet {
 		doGet(request, response);
 
 		response.setContentType("text/html");
-
-		// Step 1: Initialize a PrintWriter object to return the html values via the
-		// response
-		PrintWriter out = response.getWriter();
-
-		// Step 2: retrieve the four parameters from the request from the web form
-		// LocalDateTime DateTime = LocalDateTime.now();
-
-		// the date and time now
-		// String d = DateTime.toString();
-
-		// get session storage from game servlet
-//		HttpSession session=request.getSession(false);
-//		String g = (String)session.getAttribute("gameName");
-
-		String g = request.getParameter("gameName");
-		String u = request.getParameter("username");
-		String r = request.getParameter("rating");
-		String c = request.getParameter("comment");
-
-		// Step 3: attempt connection to database using JDBC, you can change the
-		// username and password accordingly using the phpMyAdmin > User Account
-		// dashboard
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamesdetails", "root", "");
-
-			// Step 4: implement the sql query using prepared statement
-			// (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
-			PreparedStatement ps = con
-					.prepareStatement("insert into gamereviewtest (gameName,username,rating,comment) values(?,?,?,?)");
-
-			// Step 5: parse in the data retrieved from the web form request into the
-			// prepared statement accordingly
-			// ps.setString(1, d);
-			ps.setString(1, g);
-			ps.setString(2, u);
-			ps.setString(3, r);
-			ps.setString(4, c);
-
-			// Step 6: perform the query on the database using the prepared statement
-			int i = ps.executeUpdate();
-
-			// Step 7: check if the query had been successfully execute, return “You are
-			// successfully registered” via the response,
-
-			if (i > 0) {
-
-				// How to reload web to show comment?
-
-				PrintWriter writer = response.getWriter();
-				writer.println("<h1>" + "You have successfully registered an account!" + "</h1>");
-				writer.close();
-			}
-		}
-		// Step 8: catch and print out any exception
-		catch (Exception exception) {
-			System.out.println(exception);
-			out.close();
-		}
-
-		doGet(request, response);
 	}
 
-//	// method to get parameter, query database for existing user data and redirect
-//	// to user edit page
-//	private void showReview(HttpServletRequest request, HttpServletResponse response)
-//			throws SQLException, ServletException, IOException {
-//		
-//		// get parameter passed in the URL
-//		String review = request.getParameter("gameName");
-//		
-//		Review existingReview = new Review("", "", "", "");
-//		
-//		// Step 1: Establishing a Connection
-//		try (Connection connection = getConnection();
-//				
-//				// Step 2:Create a statement using connection object
-//				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_REVIEW_BY_GAMENAME);) {
-//			preparedStatement.setString(1, name);
-//			
-//			// Step 3: Execute the query or update query
-//			ResultSet rs = preparedStatement.executeQuery();
-//			
-//			// Step 4: Process the ResultSet object
-//			while (rs.next()) {
-//				name = rs.getString("name");
-//				String password = rs.getString("password");
-//				String email = rs.getString("email");
-//				String language = rs.getString("language");
-//				existingUser = new User(name, password, email, language);
-//			}
-//		} catch (SQLException e) {
-//			System.out.println(e.getMessage());
-//		}
-//		// Step 5: Set existingUser to request and serve up the userEdit form
-//		request.setAttribute("user", existingUser);
-//		request.getRequestDispatcher("/userEdit.jsp").forward(request, response);
-//	}
+	// method to get parameter, query database for existing user data and redirect
+	// to user edit page
+	private void showEditGames(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+
+		// get parameter passed in the URL
+		String gameName = request.getParameter("gameName");
+
+		Game existingGame = new Game("", "", "", "");
+
+		// Step 1: Establishing a Connection
+		try (Connection connection = getConnection();
+
+				// Step 2:Create a statement using connection object
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_GAME_BY_ID);) {
+			preparedStatement.setString(1, gameName);
+
+			// Step 3: Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Step 4: Process the ResultSet object
+			while (rs.next()) {
+				gameName = rs.getString("gameName");
+				String gamePicture = rs.getString("gamePicture");
+				String gameDescription = rs.getString("gameDescription");
+				String genre = rs.getString("genre");
+				existingGame = new Game(gameName, gamePicture, gameDescription, genre);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		// Step 5: Set existingUser to request and serve up the userEdit form
+		request.setAttribute("game", existingGame);
+
+		request.getRequestDispatcher("/EditGame.jsp").forward(request, response);
+	}
+
+	// method to update the user table base on the form data
+	private void updateGame(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		// Step 1: Retrieve value from the request
+		String origameName = request.getParameter("origameName");
+		String gameName = request.getParameter("gameName");
+		String gamePicture = request.getParameter("gamePicture");
+		String gameDescription = request.getParameter("gameDescription");
+		String genre = request.getParameter("genre");
+
+		// Step 2: Attempt connection with database and execute update user SQL query
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_GAMES_SQL);) {
+			statement.setString(1, gameName);
+			statement.setString(2, gamePicture);
+			statement.setString(3, gameDescription);
+			statement.setString(4, genre);
+			statement.setString(5, origameName);
+
+			int i = statement.executeUpdate();
+		}
+		// Step 3: redirect back to ReviewServlet
+		response.sendRedirect("http://localhost:8080/PopGamers/ReviewServlet/GameListing");
+	}
+
+	// method to delete user
+	private void deleteGame(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+
+		// Step 1: Retrieve value from the request
+		String gameName = request.getParameter("gameName");
+
+		// Step 2: Attempt connection with database and execute delete user SQL query
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(DELETE_GAMES_SQL);) {
+			statement.setString(1, gameName);
+
+			int i = statement.executeUpdate();
+		}
+		// Step 3: redirect back to ReviewServlet GameListing
+		response.sendRedirect("http://localhost:8080/PopGamers/ReviewServlet/GameListing");
+	}
 
 }
