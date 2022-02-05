@@ -7,9 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<a href="<%=request.getContextPath()%>/FeedServlet/dashboard">Back</a>
-	</div>
+	<nav class="navbar navbar-expand-md navbar-light">
+		<div>
+			<a class="navbar-brand"> PopGamers </a>
+		</div>
+		<ul class="navbar-nav">
+			<li><a
+				href="<%=request.getContextPath()%>/FeedServlet/dashboard"
+				class="nav-link">Back to Feed</a></li>
+		</ul>
+	</nav>
 	<h1>Create Thread</h1>
 	<form action="CreateThreadServlet" method="post">
 		Title: <input type="text" name="title"><br> User: <input

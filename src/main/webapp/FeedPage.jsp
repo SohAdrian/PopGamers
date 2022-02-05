@@ -12,11 +12,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<a href="<%=request.getContextPath()%>/GamePage.jsp">Back to Home
-			Page</a> <a href="<%=request.getContextPath()%>/createThread.jsp">Create
-			a Thread</a>
-	</div>
+
+	<nav class="navbar navbar-expand-md navbar-light">
+		<div>
+			<a class="navbar-brand"> PopGamers </a>
+		</div>
+		<ul class="navbar-nav">
+			<li><a href="<%=request.getContextPath()%>/GamePage.jsp"
+				class="nav-link">Back to Home Page</a>
+			<li><a href="<%=request.getContextPath()%>/createThread.jsp"
+				class="nav-link">Create a Thread</a>
+		</ul>
+	</nav>
+
 	<h1>PopGamers Discussion Feed</h1>
 	<div class="row center" style="float: none; margin: 0 auto;">
 		<c:forEach var="thread" items="${listFeed}">
@@ -32,10 +40,15 @@
 					<p>Date Posted: ${thread.date}</p>
 					<!-- </a> -->
 					<div>
-						<a href="<%=request.getContextPath()%>/DiscussionPage.jsp">Discuss
-							in thread</a><br> <a
-							href="edit?title=<c:out value='${thread.title}'/>">Edit</a><br>
-						<a href="delete?title=<c:out value='${thread.title}'/>">Delete</a><br>
+						<ul>
+							<li><a href="<%=request.getContextPath()%>/DiscussionPage.jsp">Discuss
+								in thread</a>
+							
+							<li><a href="edit?title=<c:out value='${thread.title}'/>">Edit</a>
+							
+							<li><a href="delete?title=<c:out value='${thread.title}'/>">Delete</a>
+							
+						</ul>
 					</div>
 					<br>
 				</div>

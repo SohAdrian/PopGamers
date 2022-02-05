@@ -15,12 +15,12 @@
 <body>
 	<nav class="navbar navbar-expand-md navbar-light">
 		<div>
-			<a class="navbar-brand"> User Management Application </a>
+			<a class="navbar-brand"> PopGamers </a>
 		</div>
 		<ul class="navbar-nav">
 			<li><a
 				href="<%=request.getContextPath()%>/FeedServlet/dashboard"
-				class="nav-link">Back to Dashboard</a></li>
+				class="nav-link">Back to Feed</a></li>
 		</ul>
 	</nav>
 	<div class="container col-md-6">

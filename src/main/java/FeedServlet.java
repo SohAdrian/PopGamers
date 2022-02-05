@@ -92,8 +92,7 @@ public class FeedServlet extends HttpServlet {
 		}
 	}
 
-	// Step 5: listUsers function to connect to the database and retrieve all users
-	// records
+	// Step 5: listFeed function to connect to the database and retrieve all threads
 	private void listFeed(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Feed> threads = new ArrayList<>();
@@ -113,15 +112,15 @@ public class FeedServlet extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		// Step 5.4: Set the users list into the listUsers attribute to be pass to the
-		// userManagement.jsp
+		// Step 5.4: Set the feed list into the listFeed attribute to be pass to the
+		// FeedPage.jsp
 		request.setAttribute("listFeed", threads);
 		request.getRequestDispatcher("/FeedPage.jsp").forward(request, response);
 
 	}
 
-	// method to get parameter, query database for existing user data and redirect
-	// to user edit page
+	// method to get parameter, query database for existing thread data and redirect
+	// to thread edit page
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		// get parameter passed in the URL
@@ -145,12 +144,12 @@ public class FeedServlet extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		// Step 5: Set existingUser to request and serve up the userEdit form
+		// Step 5: Set existingUser to request and serve up the threadEdit form
 		request.setAttribute("thread", existingThread);
 		request.getRequestDispatcher("/threadEdit.jsp").forward(request, response);
 	}
 
-	// method to update the user table base on the form data
+	// method to update the feed table base on the form data
 	private void updateThread(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 		// Step 1: Retrieve value from the request
@@ -170,12 +169,11 @@ public class FeedServlet extends HttpServlet {
 			statement.setString(5, oriTitle);
 			int i = statement.executeUpdate();
 		}
-		// Step 3: redirect back to UserServlet (note: remember to change the url to
-		// your project name)
+		// Step 3: redirect back to FeedServlet
 		response.sendRedirect("http://localhost:8080/PopGamers/FeedServlet/dashboard");
 	}
 
-	// method to delete user
+	// method to delete thread
 	private void deleteThread(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		// Step 1: Retrieve value from the request
 		String title = request.getParameter("title");
@@ -185,8 +183,7 @@ public class FeedServlet extends HttpServlet {
 			statement.setString(1, title);
 			int i = statement.executeUpdate();
 		}
-		// Step 3: redirect back to UserServlet dashboard (note: remember to change the
-		// url to your project name)
+		// Step 3: redirect back to FeedServlet dashboard 
 		response.sendRedirect("http://localhost:8080/PopGamers/FeedServlet/dashboard");
 	}
 
