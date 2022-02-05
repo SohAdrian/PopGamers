@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>GameUserServlet</display-name>
+    <servlet-name>GameUserServlet</servlet-name>
+    <servlet-class>GameUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameUserServlet</servlet-name>
+    <url-pattern>/GameUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
