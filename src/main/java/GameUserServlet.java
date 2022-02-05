@@ -35,8 +35,8 @@ public class GameUserServlet extends HttpServlet {
 	private String jdbcPassword = "";
 	// Step 2: Prepare list of SQL prepared statements to perform CRUD to our
 	// database
-	private static final String INSERT_USERS_SQL = "INSERT INTO GameUserDetails" + " (username, password, email) VALUES "
-			+ " (?, ?);";
+	private static final String INSERT_USERS_SQL = "INSERT INTO GameUserDetails"
+			+ " (username, password, email) VALUES " + " (?, ?);";
 	private static final String SELECT_USER_BY_ID = "select username,password,email,language from GameUserDetails where username =?";
 	private static final String SELECT_ALL_USERS = "select * from GameUserDetails ";
 	private static final String DELETE_USERS_SQL = "delete from GameUserDetails where username = ?;";
@@ -95,15 +95,16 @@ public class GameUserServlet extends HttpServlet {
 		String action = request.getServletPath();
 		try {
 			switch (action) {
-			case "/insert":
+			case "/GameUserServlet/delete":
+				deleteUser(request, response);
 				break;
-			case "/delete":
+			case "/GameUserServlet/edit":
+				showEditForm(request, response);
 				break;
-			case "/edit":
+			case "/GameUserServlet/update":
+				updateUser(request, response);
 				break;
-			case "/update":
-				break;
-			default:
+			case "/GameUserServlet/dashboard":
 				listUsers(request, response);
 				break;
 			}
@@ -120,6 +121,56 @@ public class GameUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+
+	// method to get parameter, query database for existing user data and redirect
+	// to user edit page
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		// get parameter passed in the URL
+		String name = request.getParameter("name");
+		GameUser existingUser = new GameUser("", "", "");
+		// Step 1: Establishing a Connection
+		try (Connection connection = getConnection();
+				// Step 2:Create a statement using connection object
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
+			preparedStatement.setString(1, name);
+			// Step 3: Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+			// Step 4: Process the ResultSet object
+			while (rs.next()) {
+				name = rs.getString("name");
+				String password = rs.getString("password");
+				String email = rs.getString("email");
+				existingUser = new GameUser(name, password, email);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		// Step 5: Set existingUser to request and serve up the userEdit form
+		request.setAttribute("user", existingUser);
+		request.getRequestDispatcher("/gameUserEdit.jsp").forward(request, response);
+	}
+
+	// method to update the user table base on the form data
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		// Step 1: Retrieve value from the request
+		String oriName = request.getParameter("oriName");
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
+		// Step 2: Attempt connection with database and execute update user SQL query
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
+			statement.setString(1, name);
+			statement.setString(2, password);
+			statement.setString(3, email);
+			statement.setString(4, oriName);
+			int i = statement.executeUpdate();
+		}
+		// Step 3: redirect back to UserServlet (note: remember to change the url to
+		// your project name)
+		response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet");
 	}
 
 }
