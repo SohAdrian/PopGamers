@@ -55,15 +55,15 @@ public class RegisterServlet extends HttpServlet {
 		// dashboard
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/userdetails", "root", "");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gameuserdetails", "root", "");
 			// Step 4: implement the sql query using prepared statement
 			// (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
-			PreparedStatement ps = con.prepareStatement("insert into USERDETAILS values(?,?,?,?)");
+			PreparedStatement ps = con.prepareStatement("insert into GAMEUSERDETAILS values(?,?,?)");
 			// Step 5: parse in the data retrieved from the web form request into the
 			// prepared statement accordingly
 			ps.setString(1, n);
-			ps.setString(2, p);
-			ps.setString(3, e);
+			ps.setString(2, e);
+			ps.setString(3, p);
 			// Step 6: perform the query on the database using the prepared statement
 			int i = ps.executeUpdate(); // Step 7: check if the query had been successfully execute, return “You are
 										// successfully registered” via the response,
