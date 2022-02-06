@@ -23,7 +23,7 @@
 			<li><a style="color: white; padding: 14px 16px;"
 				href="<%=request.getContextPath()%>/GamePage.jsp">Add New Game</a></li>
 			<li><a style="color: white; padding: 14px 16px;"
-				>Go To Discussions</a></li>
+				href="<%=request.getContextPath()%>/DetailsServlet/dashboard">Go To Discussions</a></li>
 			<li><a style="color: white; padding: 14px 16px;"
 				href="<%=request.getContextPath()%>/GameUserServlet/dashboard">List of User Profiles</a></li>
 		</ul>
