@@ -17,6 +17,28 @@
 		<servlet-name>ReviewServlet</servlet-name>
 		<servlet-class>ReviewServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<display-name>RegisterServlet</display-name>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>RegisterServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<display-name>GameUserServlet</display-name>
+		<servlet-name>GameUserServlet</servlet-name>
+		<servlet-class>GameUserServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/RegisterServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GameUserServlet</servlet-name>
+		<url-pattern>/GameUserServlet/dashboard</url-pattern>
+		<url-pattern>/GameUserServlet/edit</url-pattern>
+		<url-pattern>/GameUserServlet/update</url-pattern>
+		<url-pattern>/GameUserServlet/delete</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>ReviewServlet</servlet-name>
@@ -32,5 +54,6 @@
 		<url-pattern>/FeedServlet/update</url-pattern>
 		<url-pattern>/FeedServlet/delete</url-pattern>
 	</servlet-mapping>
+
 
 </web-app>

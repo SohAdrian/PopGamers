@@ -12,8 +12,6 @@
 <title>PopGamers</title>
 </head>
 <body>
-	<a href="<%=request.getContextPath()%>/FeedServlet/dashboard">Back
-		to Dashboard</a>
 	<a href="<%=request.getContextPath()%>/ReviewServlet/GameListing"
 		class="btn btn-info">Back to Game Listing</a>
 	<h1>Add a New Game</h1>
