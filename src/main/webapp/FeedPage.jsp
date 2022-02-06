@@ -18,7 +18,7 @@
 			<a class="navbar-brand"> PopGamers </a>
 		</div>
 		<ul class="navbar-nav">
-			<li><a href="<%=request.getContextPath()%>/GamePage.jsp"
+			<li><a href="<%=request.getContextPath()%>/ReviewServlet/GameListing"
 				class="nav-link">Back to Home Page</a>
 			<li><a href="<%=request.getContextPath()%>/createThread.jsp"
 				class="nav-link">Create a Thread</a>

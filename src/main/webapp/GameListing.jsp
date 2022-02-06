@@ -18,15 +18,19 @@
 		style="background-image: linear-gradient(to left top, #44fdf3, #71a0e3, #14e49b, #3f59e7, #00d4ff)">
 		<ul class="navbar-nav">
 			<li><a style="color: white; padding: 14px 16px;"
-				href="<%=request.getContextPath()%>/DiscussionPage.jsp">Game
+				href="<%=request.getContextPath()%>/FeedServlet/dashboard">Game
 					Forum</a></li>
 			<li><a style="color: white; padding: 14px 16px;"
 				href="<%=request.getContextPath()%>/GamePage.jsp">Add New Game</a></li>
+			<li><a style="color: white; padding: 14px 16px;"
+				>Go To Discussions</a></li>
+			<li><a style="color: white; padding: 14px 16px;"
+				href="<%=request.getContextPath()%>/GameUserServlet/dashboard">List of User Profiles</a></li>
 		</ul>
 	</nav>
 	<br>
 	<div class="container">
-	<h1 style="color: #3b8cff">PopGamers Home Page</h1>
+		<h1 style="color: #3b8cff">PopGamers Home Page</h1>
 		<div class="row center" style="float: none; margin: 0 auto;">
 			<c:forEach var="game" items="${listGames}">
 				<div class="card"
