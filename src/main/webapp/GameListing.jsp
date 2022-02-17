@@ -34,7 +34,7 @@
 		<div class="row center" style="float: none; margin: 0 auto;">
 			<c:forEach var="game" items="${listGames}">
 				<div class="card"
-					style="color: white; background-image: linear-gradient(to right top, #44fdf3, #71a0e3, #14e49b, #3f59e7, #00d4ff)">
+					style="color: white; margin: 10px; padding: 55px; background-image: linear-gradient(to right top, #44fdf3, #71a0e3, #14e49b, #3f59e7, #00d4ff)">
 					<img class="img-fluid img-thumbnail" src="${game.gamePicture}"
 						width="400px" height="200px" /> <br>
 					<p>
