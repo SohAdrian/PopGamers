@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Profiles</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -19,9 +19,9 @@
 			<div class="container text-left">
 				<!-- Add new user button redirects to the register.jsp page -->
 				<a href="<%=request.getContextPath()%>/ReviewServlet/GameListing"
-					class="btn btn-success">Return to Game Listings</a>
+					class="btn btn-success" id="returnHome">Return to Game Listings</a>
 				<a href="<%=request.getContextPath()%>/register.jsp"
-					class="btn btn-success">Add New User</a>
+					class="btn btn-success" id="registerUser">Add New User</a>
 			</div>
 			<br>
 			<!-- Create a table to list out all current users information -->
@@ -43,9 +43,9 @@
 							<td><c:out value="${user.password}" /></td>
 							<td><c:out value="${user.email}" /></td>
 							<!-- For each user in the database, Edit/Delete buttons which invokes the edit/delete functions -->
-							<td><a href="edit?name=<c:out value='${user.name}' />">Edit</a>
+							<td><a href="edit?name=<c:out value='${user.name}' />"  id="editUser" >Edit</a>
 								&nbsp;&nbsp;&nbsp;&nbsp; <a
-								href="delete?name=<c:out value='${user.name}' />">Delete</a></td>
+								href="delete?name=<c:out value='${user.name}' />"  id="deleteUser" >Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
