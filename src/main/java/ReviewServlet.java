@@ -209,7 +209,7 @@ public class ReviewServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		// Step 3: redirect back to ReviewServlet
-		response.sendRedirect("http://localhost:8080/PopGamers/ReviewServlet/GameListing");
+		response.sendRedirect("http://localhost:8090/PopGamers/ReviewServlet/GameListing");
 	}
 
 	// method to delete user
@@ -226,7 +226,7 @@ public class ReviewServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		// Step 3: redirect back to ReviewServlet GameListing
-		response.sendRedirect("http://localhost:8080/PopGamers/ReviewServlet/GameListing");
+		response.sendRedirect("http://localhost:8090/PopGamers/ReviewServlet/GameListing");
 	}
 
 }
