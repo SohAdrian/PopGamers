@@ -23,12 +23,18 @@
 			<li><a style="color: white; padding: 14px 16px;"
 				href="<%=request.getContextPath()%>/GamePage.jsp">Add New Game</a></li>
 			<li><a style="color: white; padding: 14px 16px;"
-				href="<%=request.getContextPath()%>/DetailsServlet/dashboard">Go To Discussions</a></li>
+				href="<%=request.getContextPath()%>/DetailsServlet/dashboard">Go
+					To Discussions</a></li>
 			<li><a style="color: white; padding: 14px 16px;"
-				href="<%=request.getContextPath()%>/GameUserServlet/dashboard">List of User Profiles</a></li>
+				href="<%=request.getContextPath()%>/GameUserServlet/dashboard">List
+					of User Profiles</a></li>
 		</ul>
-		<a class="btn btn-warning" style="float: right; color: white; padding: 10px;" href="<%=request.getContextPath()%>/register.jsp">Sign Up</a>
-	<a class="btn btn-danger" style="float: right; color: white; padding: 10px;" href="<%=request.getContextPath()%>">Login</a>
+		<div style="float: right;">
+			<a class="btn btn-warning" style="color: white; margin: 10px;"
+				href="<%=request.getContextPath()%>/register.jsp">Sign Up</a> <a
+				class="btn btn-danger" style="color: white; margin: 10px;"
+				href="<%=request.getContextPath()%>">Login</a>
+		</div>
 	</nav>
 	<br>
 	<div class="container">
