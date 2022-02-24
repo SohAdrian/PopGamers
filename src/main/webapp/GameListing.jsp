@@ -29,13 +29,13 @@
 				href="<%=request.getContextPath()%>/GameUserServlet/dashboard">List
 					of User Profiles</a></li>
 		</ul>
-		<div style="float: right;">
+	</nav>
+	<div style="float: right;">
 			<a class="btn btn-warning" style="color: white; margin: 10px;"
 				href="<%=request.getContextPath()%>/register.jsp">Sign Up</a> <a
 				class="btn btn-danger" style="color: white; margin: 10px;"
 				href="<%=request.getContextPath()%>">Login</a>
 		</div>
-	</nav>
 	<br>
 	<div class="container">
 		<h1 style="color: #3b8cff">PopGamers Home Page</h1>
