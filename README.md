@@ -2,7 +2,7 @@
 
 Hello, this is our ReadMe file for PopGamers
 
-# Who Managed on each CRUD?
+# Which CRUD are we doing?
 
 Game Management - Adrian
 
@@ -33,6 +33,12 @@ CREATE TABLE `gamedetails` (
 
 
 # Continuous Integration and Continuous Deployment Settings
+
+apache tomcat server.xml
+
+
+
+apache tomcat tomcat_user.xml
 
 
 
