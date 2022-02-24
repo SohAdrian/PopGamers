@@ -27,6 +27,8 @@
 			<li><a style="color: white; padding: 14px 16px;"
 				href="<%=request.getContextPath()%>/GameUserServlet/dashboard">List of User Profiles</a></li>
 		</ul>
+		<a class="btn btn-warning" href="<%=request.getContextPath()%>/register.jsp">Sign Up</a>
+		<a class="btn btn-danger" href="<%=request.getContextPath()%>">Login</a>
 	</nav>
 	<br>
 	<div class="container">
