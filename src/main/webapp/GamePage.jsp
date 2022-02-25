@@ -20,7 +20,7 @@
 			<br> Game Name: <input type="text" name="gameName"><br>
 			gamePicture: <input type="text" name="gamePicture"><br>
 			gameDescription: <input type="text" name="gameDescription"><br>
-			Game's Genre: <input type="text" name="genre"><br> <input
+			Game's Genre: <input type="text" name="genre"><br> <input id="addGameBtn"
 				class="btn btn-info" type="submit" value="Add Game?" />
 		</form>
 	</div>
