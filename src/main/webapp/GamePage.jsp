@@ -15,7 +15,7 @@
 	<a href="<%=request.getContextPath()%>/ReviewServlet/GameListing"
 		class="btn btn-info">Back to Game Listing</a>
 	<h1>Add a New Game</h1>
-	<div class="card">
+	<div id="addGameForm" class="card">
 		<form action="GameServlet" method="post">
 			<br> Game Name: <input type="text" name="gameName"><br>
 			gamePicture: <input type="text" name="gamePicture"><br>
