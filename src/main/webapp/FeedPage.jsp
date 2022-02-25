@@ -19,7 +19,7 @@
 		</div>
 		<ul class="navbar-nav">
 			<li><a href="<%=request.getContextPath()%>/ReviewServlet/GameListing"
-				class="nav-link">Back to Home Page</a>
+				class="nav-link" id="returnHome">Back to Home Page</a>
 			<li><a href="<%=request.getContextPath()%>/createThread.jsp"
 				class="nav-link">Create a Thread</a>
 		</ul>

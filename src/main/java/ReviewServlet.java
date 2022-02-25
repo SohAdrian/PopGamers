@@ -28,7 +28,7 @@ import javax.servlet.RequestDispatcher;
 public class ReviewServlet extends HttpServlet {
 
 	// Step 1: Prepare list of variables used for database connections
-	private String jdbcURL = "jdbc:mysql://localhost:3306/gamesdetails";
+	private String jdbcURL = "jdbc:mysql://localhost:3307/feeddetails";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
 

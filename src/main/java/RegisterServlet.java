@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 		// dashboard
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamesdetails", "root", "");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/feeddetails", "root", "");
 			// Step 4: implement the sql query using prepared statement
 			// (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
 			PreparedStatement ps = con.prepareStatement("insert into GAMEUSERDETAILS values(?,?,?)");
