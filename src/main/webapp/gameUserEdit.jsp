@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Profiles</title>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -14,7 +14,6 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<h1><c:out value='${user.name}' /></h1>
 
 	<nav class="navbar navbar-expand-md navbar-light">
 		<div>
@@ -50,21 +49,21 @@ Add New User
 						value="<c:out value='${user.name}' />" />
 				</c:if>
 				<fieldset class="form-group">
-					<label>User Name</label> <input type="text"
+					<label>User Name</label> <input  id="editUsername" type="text"
 						value="<c:out value='${user.name}' />" class="form-control"
 						name="name" required="required">
 				</fieldset>
 				<fieldset class="form-group">
-					<label>Password</label> <input type="text"
-						value="<c:out value='${user.email}' />" class="form-control"
+					<label>Password</label> <input  id="editPassword" type="text"
+						value="<c:out value='${user.password}' />" class="form-control"
 						name="password">
 				</fieldset>
 				<fieldset class="form-group">
-					<label>User Email</label> <input type="text"
+					<label>User Email</label> <input  id="editEmail" type="text"
 						value="<c:out value='${user.email}' />" class="form-control"
 						name="email">
 				</fieldset>
-				<button type="submit" class="btn btn-success">Save</button>
+				<button id="editSubmit" type="submit" class="btn btn-success">Save</button>
 				</form>
 			</div>
 		</div>

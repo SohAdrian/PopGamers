@@ -69,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
 										// successfully registered” via the response,
 			if (i > 0) {
 				PrintWriter writer = response.getWriter();
-				response.sendRedirect("http://localhost:8080/PopGamers/ReviewServlet/GameListing");
+				response.sendRedirect("http://localhost:8090/PopGamers/ReviewServlet/GameListing");
 				writer.close();
 			}
 		} // Step 8: catch and print out any exception
