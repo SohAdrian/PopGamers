@@ -92,6 +92,13 @@ public class Game {
 			return (int) (g1.getGameName().compareTo(g2.getGameName()));
 		}
 	};
+	
+	public static Comparator<Game> GenreComparator = new Comparator<Game>() {
+		@Override
+		public int compare(Game g1, Game g2) {
+			return (int) (g1.getGenre().compareTo(g2.getGenre()));
+		}
+	};
 
 //	public static Comparator<Song> songLengthComparator = new Comparator<Song>() {
 //		@Override         
