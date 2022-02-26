@@ -32,13 +32,27 @@ CREATE TABLE `gamedetails` (
 # Sql table Script for Game Discussion Page
 
 
-# Continuous Integration and Continuous Deployment Settings
+# Continuous Integration and Continuous Deployment apache tomcat Settings
 
-apache tomcat server.xml
+server.xml connector port
 
+Adrian - port 8090
 
+Thoha -
 
-apache tomcat tomcat_user.xml
+Javier -
+
+Shafiq -
+
+tomcat-user.xml
+
+Adrian - username="tomcat" password="password"
+
+Thoha -
+
+Javier -
+
+Shafiq -
 
 
 
