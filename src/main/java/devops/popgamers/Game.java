@@ -86,7 +86,7 @@ public class Game {
 //				&& Objects.equals(title, other.title);
 //	}
 
-	public static Comparator<Game> gameNamComparator = new Comparator<Game>() {
+	public static Comparator<Game> gameNameComparator = new Comparator<Game>() {
 		@Override
 		public int compare(Game g1, Game g2) {
 			return (int) (g1.getGameName().compareTo(g2.getGameName()));
