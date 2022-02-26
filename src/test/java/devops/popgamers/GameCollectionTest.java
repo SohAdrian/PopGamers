@@ -56,7 +56,9 @@ class GameCollectionTest {
 	 */
 	@Test
 	void testGetGames() {
-		fail("Not yet implemented");
+
+		gc.getGames();
+		// fail("Not yet implemented");
 	}
 
 	/**
@@ -80,7 +82,14 @@ class GameCollectionTest {
 	 */
 	@Test
 	void testSortGameByGameName() {
-		fail("Not yet implemented");
+
+		List<Game> testGc = gc.getGames();
+		// Assert that Game Collection is equals to game collection size 4
+		assertEquals(testGc.size(), GAME_COLLECTION_SIZE);
+
+		gc.sortGameByGameName();
+		assertEquals(gc.getGames().size(), GAME_COLLECTION_SIZE);
+		// fail("Not yet implemented");
 	}
 
 	/**
@@ -88,7 +97,14 @@ class GameCollectionTest {
 	 */
 	@Test
 	void testSortGameByGenre() {
-		fail("Not yet implemented");
+
+		List<Game> testGc = gc.getGames();
+		// Assert that Game Collection is equals to game collection size 4
+		assertEquals(testGc.size(), GAME_COLLECTION_SIZE);
+
+		gc.sortGameByGenre();
+		assertEquals(gc.getGames().size(), GAME_COLLECTION_SIZE);
+		// fail("Not yet implemented");
 	}
 
 	/**
@@ -97,10 +113,9 @@ class GameCollectionTest {
 	 */
 	@Test
 	void testFindGameByGameName() {
-		List<Game> testGc = gc.getGames();
-		
-		//fail("Not yet implemented");
-		
+
+		// fail("Not yet implemented");
+
 	}
 
 }
