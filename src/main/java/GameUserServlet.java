@@ -30,7 +30,7 @@ public class GameUserServlet extends HttpServlet {
 		// Step 1: Prepare list of variables used for database connections
 	}
 
-	private String jdbcURL = "jdbc:mysql://localhost:3306/feeddetails";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/gamesdetails";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
 	// Step 2: Prepare list of SQL prepared statements to perform CRUD to our
@@ -170,7 +170,7 @@ public class GameUserServlet extends HttpServlet {
 		}
 		// Step 3: redirect back to UserServlet (note: remember to change the url to
 		// your project name)
-		response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/GameUserServlet/dashboard");
 	}
 
 	// method to delete user
@@ -185,7 +185,7 @@ public class GameUserServlet extends HttpServlet {
 		}
 		// Step 3: redirect back to UserServlet dashboard (note: remember to change the
 		// url to your project name)
-		response.sendRedirect("http://localhost:8080/PopGamers/GameUserServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/GameUserServlet/dashboard");
 	}
 
 }

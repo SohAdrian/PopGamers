@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private String jdbcURL = "jdbc:mysql://localhost:3306/feeddetails";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/gamesdetails";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
 
@@ -148,7 +148,7 @@ public class DetailsServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 
-		response.sendRedirect("http://localhost:8080/PopGamers/DetailsServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/DetailsServlet/dashboard");
 	}
 
 	private void deleteDetails(HttpServletRequest request, HttpServletResponse response)
@@ -162,7 +162,7 @@ public class DetailsServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 
-		response.sendRedirect("http://localhost:8080/PopGamers/DetailsServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/DetailsServlet/dashboard");
 	}
 
 	/**
