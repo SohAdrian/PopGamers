@@ -61,7 +61,7 @@ public class CreateThreadServlet extends HttpServlet {
 		// dashboard
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/feeddetails", "root", "");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/feeddetails", "root", "");
 			// Step 4: implement the sql query using prepared statement
 			// (https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html)
 			PreparedStatement ps = con.prepareStatement("insert into feeddetails values(?,?,?,?)");
@@ -73,8 +73,8 @@ public class CreateThreadServlet extends HttpServlet {
 			ps.setString(4, d);
 			// Step 6: perform the query on the database using the prepared statement
 			int i = ps.executeUpdate();
-			// Step 7: check if the query had been successfully execute, return “You are
-			// successfully registered” via the response,
+			// Step 7: check if the query had been successfully execute, return ï¿½You are
+			// successfully registeredï¿½ via the response,
 			if (i > 0) {
 				PrintWriter writer = response.getWriter();
 				writer.println("<h1>" + "You have created a thread!" + "</h1>");

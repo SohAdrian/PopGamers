@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private String jdbcURL = "jdbc:mysql://localhost:3307/feeddetails";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/feeddetails";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
 

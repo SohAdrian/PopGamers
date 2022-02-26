@@ -30,7 +30,7 @@ public class GameUserServlet extends HttpServlet {
 		// Step 1: Prepare list of variables used for database connections
 	}
 
-	private String jdbcURL = "jdbc:mysql://localhost:3307/feeddetails";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/feeddetails";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
 	// Step 2: Prepare list of SQL prepared statements to perform CRUD to our

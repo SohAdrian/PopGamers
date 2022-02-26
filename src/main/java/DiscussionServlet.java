@@ -46,7 +46,8 @@ public class DiscussionServlet extends HttpServlet {
 		try {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 Connection con = DriverManager.getConnection(
-			 "jdbc:mysql://localhost:3307/feeddetails", "root", "");
+			 "jdbc:mysql://localhost:3306"
+			 + "/feeddetails", "root", "");
 			 
 			 PreparedStatement ps = con.prepareStatement("insert into detailsdiscussion values(?,?)");
 			 ps.setString(1, n);
