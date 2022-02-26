@@ -33,7 +33,7 @@
 	<div style="float: right;">
 			<a class="btn btn-warning" style="color: white; margin: 10px;"
 				href="<%=request.getContextPath()%>/register.jsp">Sign Up</a> <a
-				class="btn btn-danger" style="color: white; margin: 10px;"
+				class="btn btn-danger" style=\"color: white; margin: 10px;"
 				href="<%=request.getContextPath()%>">Login</a>
 		</div>
 	<br>
@@ -41,11 +41,11 @@
 		<h1 style="color: #3b8cff">PopGamers Home Page</h1>
 		<div class="row center" style="float: none; margin: 0 auto;">
 			<c:forEach var="game" items="${listGames}">
-				<div class="card"
+				<div id="game" class="card"
 					style="color: white; margin: 10px; padding: 55px; background-image: linear-gradient(to right top, #44fdf3, #71a0e3, #14e49b, #3f59e7, #00d4ff)">
 					<img class="img-fluid img-thumbnail" src="${game.gamePicture}"
 						width="400px" height="200px" /> <br>
-					<p>
+					<p id="gameName">
 						Game Name: <b>${game.gameName}</b>
 					</p>
 					<p style="width: 400px">Description: ${game.gameDescription}</p>
@@ -54,7 +54,7 @@
 					<div>
 						<a class="btn btn-warning"
 							href="edit?gameName=<c:out value='${game.gameName}' />">Edit
-							Game</a> | <a class="btn btn-danger"
+							Game</a> | <a id="delete" class="btn btn-danger"
 							href="delete?gameName=<c:out value='${game.gameName}' />">Delete
 							Game</a>
 					</div>
