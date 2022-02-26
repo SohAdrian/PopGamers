@@ -24,8 +24,8 @@ public class RegisterTest {
 		Assert.assertTrue(webDriver.getTitle().contains("Register to PopGamers!"));
 
 		// enter credentials in elements located by id
-		// enter a valid username
-		webDriver.findElement(By.id("username")).sendKeys("naming36");
+		// enter a valid username, change naming everytime ( name is unique key)
+		webDriver.findElement(By.id("username")).sendKeys("naming453");
 
 		// enter a valid email address
 		webDriver.findElement(By.id("email")).sendKeys("name@abc.com");
