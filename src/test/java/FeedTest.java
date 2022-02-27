@@ -33,7 +33,7 @@ public class FeedTest {
 		webDriver.findElement(By.id("createThread")).click();
 
 		// assert title of Thread form to ensure the right page is accessed
-		Assert.assertTrue(webDriver.getTitle().contains("Thread Creation"));
+		Assert.assertTrue(webDriver.getTitle().contains("ThreadCreation"));
 
 		// enter form values in elements located by id
 		// enter a title
@@ -64,7 +64,7 @@ public class FeedTest {
 		webDriver.findElement(By.id("editForm")).click();
 
 		// assert title of edit form to ensure the right page is accessed
-		Assert.assertTrue(webDriver.getTitle().contains("Edit Thread"));
+		Assert.assertTrue(webDriver.getTitle().contains("EditThread"));
 
 		// enter in elements located by id
 		// edit title
