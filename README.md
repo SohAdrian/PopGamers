@@ -10,7 +10,7 @@ User Management - Thoha
 
 To access User Management CRUD functions, load the server and go to:
 ```bash
-http://localhost:8090/PopGamers/GameUserDetails/dashboard
+http://localhost:8090/PopGamers/GameUserServlet/dashboard
 ```
 
 Game Discussion Feed - Javier
