@@ -83,7 +83,7 @@ public class FeedTest {
 		webDriver.findElement(By.id("saveChanges")).click();
 
 		// assert title of dashboard to check that the page led to the right dashboard
-		Assert.assertTrue(webDriver.getTitle().contains("All Feeds"));
+		Assert.assertTrue(webDriver.getCurrentUrl().contains("http://localhost:8090/PopGamers/FeedServlet/dashboard"));
 
 		System.out.println("Thread successfully edited!");
 	}
