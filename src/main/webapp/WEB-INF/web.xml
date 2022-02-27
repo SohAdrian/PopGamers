@@ -18,12 +18,10 @@
 		<servlet-class>ReviewServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<display-name>RegisterServlet</display-name>
 		<servlet-name>RegisterServlet</servlet-name>
 		<servlet-class>RegisterServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<display-name>GameUserServlet</display-name>
 		<servlet-name>GameUserServlet</servlet-name>
 		<servlet-class>GameUserServlet</servlet-class>
 	</servlet>

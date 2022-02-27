@@ -10,7 +10,7 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Thread</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-light">
@@ -40,29 +40,29 @@
 				</caption>
 				<c:if test="${thread != null}">
 					<input type="hidden" name="oriTitle"
-						value="<c:out value='${thread.title}' />" />
+						id="oriTitle" value="<c:out value='${thread.title}' />" />
 				</c:if>
 				<fieldset class="form-group">
 					<label>Thread Name</label> <input type="text"
 						value="<c:out value='${thread.title}' />" class="form-control"
-						name="title" required="required">
+						name="title" id="editTitle" required="required">
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Content</label> <input type="text"
 						value="<c:out value='${thread.content}' />" class="form-control"
-						name="content">
+						name="content" id="editContent">
 				</fieldset>
 				<fieldset class="form-group">
 					<label>User</label> <input type="text"
 						value="<c:out value='${thread.user}' />" class="form-control"
-						name="user">
+						name="user" id="editUser">
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Date</label> <input type="text"
 						value="<c:out value='${thread.date}' />" class="form-control"
-						name="date">
+						name="date" id="editDate">
 				</fieldset>
-				<button type="submit" class="btn btn-success">Save</button>
+				<button type="submit" class="btn btn-success" id="saveChanges">Save</button>
 			</div>
 		</div>
 	</div>

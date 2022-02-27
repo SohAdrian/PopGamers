@@ -170,7 +170,7 @@ public class FeedServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		// Step 3: redirect back to FeedServlet
-		response.sendRedirect("http://localhost:8080/PopGamers/FeedServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/FeedServlet/dashboard");
 	}
 
 	// method to delete thread
@@ -184,7 +184,7 @@ public class FeedServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 		// Step 3: redirect back to FeedServlet dashboard 
-		response.sendRedirect("http://localhost:8080/PopGamers/FeedServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/FeedServlet/dashboard");
 	}
 
 	/**

@@ -148,7 +148,7 @@ public class DetailsServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 
-		response.sendRedirect("http://localhost:8080/PopGamers/DetailsServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/DetailsServlet/dashboard");
 	}
 
 	private void deleteDetails(HttpServletRequest request, HttpServletResponse response)
@@ -162,7 +162,7 @@ public class DetailsServlet extends HttpServlet {
 			int i = statement.executeUpdate();
 		}
 
-		response.sendRedirect("http://localhost:8080/PopGamers/DetailsServlet/dashboard");
+		response.sendRedirect("http://localhost:8090/PopGamers/DetailsServlet/dashboard");
 	}
 
 	/**

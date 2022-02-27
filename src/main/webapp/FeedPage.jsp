@@ -9,7 +9,7 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>All Feeds</title>
 </head>
 <body>
 
@@ -19,9 +19,9 @@
 		</div>
 		<ul class="navbar-nav">
 			<li><a href="<%=request.getContextPath()%>/ReviewServlet/GameListing"
-				class="nav-link">Back to Home Page</a>
+				class="nav-link" id="returnHome">Back to Home Page</a>
 			<li><a href="<%=request.getContextPath()%>/createThread.jsp"
-				class="nav-link">Create a Thread</a>
+				class="nav-link" id="createThread">Create a Thread</a>
 		</ul>
 	</nav>
 
@@ -44,7 +44,7 @@
 							<li><a href="<%=request.getContextPath()%>/DiscussionPage.jsp">Discuss
 								in thread</a>
 							
-							<li><a href="edit?title=<c:out value='${thread.title}'/>">Edit</a>
+							<li><a id="editForm" href="edit?title=<c:out value='${thread.title}'/>">Edit</a>
 							
 							<li><a href="delete?title=<c:out value='${thread.title}'/>">Delete</a>
 							

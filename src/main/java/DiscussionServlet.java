@@ -46,7 +46,8 @@ public class DiscussionServlet extends HttpServlet {
 		try {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 Connection con = DriverManager.getConnection(
-			 "jdbc:mysql://localhost:3306/gamesdetails", "root", "");
+			 "jdbc:mysql://localhost:3306"
+			 + "/gamesdetails", "root", "");
 			 
 			 PreparedStatement ps = con.prepareStatement("insert into detailsdiscussion values(?,?)");
 			 ps.setString(1, n);
@@ -54,7 +55,7 @@ public class DiscussionServlet extends HttpServlet {
 			 
 			 int i = ps.executeUpdate();
 			 
-			 response.sendRedirect("http://localhost:8080/PopGamers/DetailsServlet/dashboard");
+			 response.sendRedirect("http://localhost:8090/PopGamers/DetailsServlet/dashboard");
 		}
 		catch (Exception exception) {
 			 System.out.println(exception);
