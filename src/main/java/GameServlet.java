@@ -91,9 +91,11 @@ public class GameServlet extends HttpServlet {
 			// successfully registered� via the response,
 			if (i > 0) {
 				
-				PrintWriter writer = response.getWriter();
-				writer.println("<h1>" + "You have successfully Added a Game" + "</h1>");
-				writer.close();
+//				PrintWriter writer = response.getWriter();
+//				writer.println("<h1>" + "You have successfully Added a Game" + "</h1>");
+//				writer.close();
+				
+				response.sendRedirect("http://localhost:8090/PopGamers/ReviewServlet/GameListing");
 			}
 		}
 		// Step 8: catch and print out any exception
