@@ -49,7 +49,7 @@ public class FeedTest {
 		webDriver.findElement(By.id("threadSubmit")).submit();
 
 		// assert title of dashboard to check that the page led to the right dashboard
-		Assert.assertTrue(webDriver.getTitle().contains("GameListing"));
+		Assert.assertTrue(webDriver.getCurrentUrl().contains("http://localhost:8090/PopGamers/CreateThreadServlet"));
 
 		System.out.println("Thread created!");
 
