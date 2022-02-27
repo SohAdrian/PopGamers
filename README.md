@@ -40,6 +40,12 @@ CREATE TABLE `gamedetails` (
 
 # Sql table Script for Game Discussion Feed
 
+CREATE TABLE `feeddetails` (
+ `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `content` text(1024) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `user` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `date` date COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 
 # Sql table Script for Game Discussion Page
 
