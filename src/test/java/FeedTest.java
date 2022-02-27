@@ -32,8 +32,8 @@ public class FeedTest {
 		// Retrieve link using its id and click on it
 		webDriver.findElement(By.id("createThread")).click();
 
-		// assert title of Thread form to ensure the right page is accessed
-		Assert.assertTrue(webDriver.getTitle().contains("Thread Creation"));
+		// assert currentUrl of Thread form to ensure the right page is accessed
+		Assert.assertTrue(webDriver.getCurrentUrl().contains("http://localhost:8090/PopGamers/createThread.jsp"));
 
 		// enter form values in elements located by id
 		// enter a title
